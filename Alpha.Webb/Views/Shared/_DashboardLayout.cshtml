@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    @* data-theme="" *@
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] | Alpha</title>
+    <script type="importmap"></script>
+
+    <script src="https://kit.fontawesome.com/cb728e27d9.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/sections/header.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/sections/side.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Alpha.Webb.styles.css" asp-append-version="true" />
+</head>
+<body>
+
+    <div class="dashboard">
+        @await Html.PartialAsync("Partials/Sections/_Side")
+        @await Html.PartialAsync("Partials/Sections/_Header")
+
+        <main class="page-content">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

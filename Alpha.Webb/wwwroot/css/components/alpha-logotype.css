@@ -1,0 +1,15 @@
+﻿.side .logotype {
+    grid-area: logo;
+    border-right: 1px solid var(--clr-border-200);
+}
+
+.logotype .alpha-logotype {
+    gap: 0.5rem;
+    display: inline-flex;
+    width: max-content;
+    align-items: center;
+    font-weight: var(--fw-bold);
+    font-family: var(--font-logo);
+    font-size: var(--fs26px);
+    margin: 1.25rem 1.5rem;
+}

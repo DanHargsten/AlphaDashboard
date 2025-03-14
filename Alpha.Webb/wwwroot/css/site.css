@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+input {
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+    color: var(--clr-body-dark);
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    border: none;
+    background-color: transparent;
+}
+
+:root {
+    /* ---------- Typography ---------- */
+    --font-regular: "Nunito", sans-serif;
+    --font-logo: "Comfortaa", sans-serif;
+    --fs16px: 1rem;
+    --fs24px: 1.5rem;
+    --fs26px: 1.625rem;
+    --fs32px: 2rem;
+    --fw-regular: 400;
+    --fw-medium: 500;
+    --fw-semibold: 600;
+    --fw-bold: 700;
+    --fw-extrabold: 800;
+    /* ---------- Colors ---------- */
+    --clr-heading: #1A1926;
+    --clr-body-light: #637085;
+    --clr-body-dark: #28263B;
+    --clr-grey-100: #f5f7fa;
+    --clr-grey-200: #F0F1F5;
+    --clr-grey-300: #E8EAED;
+    --clr-grey-400: #E3E5E8;
+    --clr-border-100: #EBEEF2;
+    --clr-border-200: #E3E5E8;
+    --clr-border-300: #C6C8CC;
+    --clr-background: #F1F3F7;
+    --clr-surface: #FFFFFF;
+    --clr-accent: #2D99FF;
+    --clr-accent-opacity: #2d99ff1a;
+    --clr-orange: #FF9640;
+    --clr-orange-dark: #F09330;
+    --clr-red: #FF6640;
+    --clr-red-dark: #E94D3F;
+    --clr-yellow: #FFD422;
+    --clr-yellow-dark: #FCBB42;
+    --clr-blue: #2CD9D9;
+    --clr-blue-dark: #2D7DCC;
+    --clr-green: #31D482;
+    --clr-green-dark: #24B26B;
+    --clr-purple: #826AF9;
+    --clr-purple-dark: #634CD4;
+}
+
+    [data-theme="dark"] {
+    --clr-heading: #FFFFFF;
+    --clr-body-light: #637085;
+    --clr-body-dark: #28263B;
+    --clr-grey-100: #f5f7fa;
+    --clr-grey-200: #F0F1F5;
+    --clr-grey-300: #E8EAED;
+    --clr-grey-400: #E3E5E8;
+    --clr-border-100: #EBEEF2;
+    --clr-border-200: #232324;
+    --clr-border-300: #C6C8CC;
+    --clr-background: #151517;
+    --clr-surface: #151517;
+}
+
+html, body {
+    background-color: var(--clr-grey-100);
+    font-family: var(--font-regular);
+    font-size: var(--fs16px);
+}
+
+/* Structure */
+
+/* Buttons */
+
+/* Link */
+
+/* List */
+
+/*  */
+.screen-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100dvh;
+}
+
+.box-surface {
+    padding: 2.25rem;
+    border-radius: 1rem;
+    background-color: var(--clr-surface);
+    box-shadow: 0px 4px 4px 1px rgba(130, 130, 130, 0.2)
+}
+
+
+
+/* ================= DASHBOARD LAYOUT ================= */
+
+.dashboard {
+    display: grid;
+    grid-template-columns: minmax(3.25rem, 16.5rem) 1fr;
+    grid-template-rows: 5rem 1fr;
+    grid-template-areas: "logo top" "side main";
+    height: 100dvh;
+}
+
+
+/* ================= HEADER ================= */
+
+
+
+
+
+
+
+
+
+
+
+
+.page-content {
+    grid-area: main;
+    padding: 1.85rem;
+}
