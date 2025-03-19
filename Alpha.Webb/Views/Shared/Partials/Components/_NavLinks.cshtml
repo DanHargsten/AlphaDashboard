@@ -12,5 +12,11 @@
                 <span>Team Members</span>
             </a>
         </li>
+        <li class="nav-item">
+            <a asp-controller="Admin" asp-action="Clients" class="nav-link @(Context.Request.Path == "/admin/clients" ? "active" : "")">
+                <i class="fa-solid fa-handshake" aria-hidden="true"></i>
+                <span>Clients</span>
+            </a>
+        </li>
     </ul>
 </nav> 
