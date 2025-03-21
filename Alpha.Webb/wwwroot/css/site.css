@@ -1,6 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
 
+/*
+    1. Variables
+    2. Darkmode
+    3. Base / Reset
+    4. Layout / Utility
+    5. Components
+    6. Forms
+    7. Sections
+      - 7.1. Sidebar
+      - 7.2. Header
+      - 7.3. Page Content
+      - 7.4. Project Cards
+*/
+
 
 /* ====================================
   01. Variables
@@ -144,6 +158,7 @@ button {
     grid-template-rows: 5rem 1fr;
     grid-template-areas: "logo top" "side main";
     height: 100dvh;
+    overflow: hidden;
 }
 
 .layout-container {
@@ -159,7 +174,7 @@ button {
 
 /* ====================================
   05. Components
-==================================== */
+/*==================================== */
 /* 1. Buttons */
 .btn {
     padding-block: 0.875rem;
@@ -473,10 +488,51 @@ button {
 /* 7.2. Page Content */
 /* ----------------------------- */
 .page-content {
-    /*    border: 2px solid darkblue;*/
-
     grid-area: main;
-    padding: 1.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-top: 1.85rem;
+    padding-inline: 1.85rem;
+    height: 100%;
+    overflow: hidden;
+}
+
+.projects-header {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    flex-shrink: 0;
+    position: sticky;
+    top: 0;    
+    z-index: 10;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--clr-border-200);
+}
+
+.projects-header-text {
+    font-size: var(--fs32px);
+    font-weight: var(--fw-bold);
+    color: var(--clr-heading);
+}
+
+.projects-tabs {
+    display: inline-flex;
+    gap: 2rem;    
+}
+    .projects-tabs > .tab {
+        color: var(--clr-body-light);
+        font-size: var(--fs16px);
+        font-weight: var(--fw-bold);     
+    }
+
+.tab-active {
+    border-bottom: 2px solid blue;
+}
+
+.projects-list {
+    flex: 1;
+    overflow-y: auto;
 }
 
 

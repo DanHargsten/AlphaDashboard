@@ -3,8 +3,27 @@
     ViewData["Title"] = "Projects";
 }
 
-<h2>
-    @ViewData["Title"]
-</h2>
 
-@await Html.PartialAsync("Partials/Components/_ProjectCard")
+<header class="projects-header">
+    <h1 class="projects-header-text">@ViewData["Title"]</h1>
+    <nav class="projects-tabs">
+        <button class="tab tab-active">All [8]</button>
+        <button class="tab">Started [6]</button>
+        <button class="tab">Completed [2]</button>
+    </nav>
+</header>
+
+<div class="projects-list">
+    <section class="projects-grid">
+
+        <!-- Manuella placeholders -->
+        @await Html.PartialAsync("Partials/Components/_ProjectCard")
+        @await Html.PartialAsync("Partials/Components/_ProjectCard")
+        @await Html.PartialAsync("Partials/Components/_ProjectCard")
+        @await Html.PartialAsync("Partials/Components/_ProjectCard")
+        @await Html.PartialAsync("Partials/Components/_ProjectCard")
+        @await Html.PartialAsync("Partials/Components/_ProjectCard")
+        @await Html.PartialAsync("Partials/Components/_ProjectCard")
+
+    </section>
+</div>
