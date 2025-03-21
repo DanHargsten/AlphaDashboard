@@ -4,8 +4,89 @@
 }
 
 
-<div class="box-layout screen-center">
-    <div class="box-surface">
-        @ViewData["Title"]
-    </div>
-</div>
+<main class="box-layout screen-center" role="main">
+    <article class="box-surface auth-container">
+        <form method="post" role="form" class="form auth-form" novalidate>
+            <!-- Form Header -->
+            <header class="form__header">
+                <h1 class="form__title">Login</h1>
+            </header>
+
+            <!-- Main Content -->
+            <div class="auth-main">
+                <!-- Email Field -->
+                <div class="form__group">
+                    <label for="email" class="form__label">Email</label>
+                    <div class="form__field-group">
+                        <input
+                            id="email"
+                            class="form__input"
+                            type="email"
+                            name="email"
+                            required
+                            placeholder="Your email address"
+                            aria-describedby="email-error"
+                            autocomplete="email"
+                        />
+                        <span
+                            id="email-error"
+                            class="form__validation-error"
+                            aria-live="polite"
+                            role="alert"
+                        ></span>
+                    </div>
+                </div>
+
+                <!-- Password Field -->
+                <div class="form__group">
+                    <label for="password" class="form__label">Password</label>
+                    <div class="form__field-group">
+                        <input
+                            id="password"
+                            class="form__input"
+                            type="password"
+                            name="password"
+                            required
+                            placeholder="Enter your password"
+                            aria-describedby="password-error"
+                            autocomplete="current-password"
+                        />
+                        <span
+                            id="password-error"
+                            class="form__validation-error"
+                            aria-live="polite"
+                            role="alert"
+                        ></span>
+                    </div>
+                </div>
+
+                <!-- Remember Me -->
+                <div class="form__group form__group-tight">
+                    <div class="form__checkbox-group">
+                        <label class="form__checkbox-label">
+                            <input
+                                type="checkbox"
+                                name="rememberMe"
+                                class="form__checkbox-input"
+                            />
+                            <span class="form__checkbox-text">Remember Me</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form__actions">
+                    <button type="submit" class="form__submit btn btn-primary btn-submit">Log In</button>
+                </div>
+            </div>
+
+            <!-- Form Footer -->
+            <footer class="form__footer">
+                <p class="form__footer-text">
+                    Don't have an account?
+                    <a href="#" class="form__footer-link">Sign Up</a>
+                </p>
+            </footer>
+        </form>
+    </article>
+</main>

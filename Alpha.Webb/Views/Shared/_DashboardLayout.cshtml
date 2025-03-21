@@ -15,13 +15,15 @@
 </head>
 <body>
 
-    <div class="dashboard">
-        @await Html.PartialAsync("Partials/Sections/_Side")
-        @await Html.PartialAsync("Partials/Sections/_Header")
+    <div class="layout-container">
+        <div class="dashboard">
+            @await Html.PartialAsync("Partials/Sections/_Side")
+            @await Html.PartialAsync("Partials/Sections/_Header")
 
-        <main class="page-content">
-            @RenderBody()
-        </main>
+            <main class="page-content">
+                @RenderBody()
+            </main>
+        </div>
     </div>
 
     <script src="~/js/site.js" asp-append-version="true"></script>
