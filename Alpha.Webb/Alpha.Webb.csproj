@@ -7,9 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\css\components\**" />
+    <Content Remove="wwwroot\css\components\**" />
+    <EmbeddedResource Remove="wwwroot\css\components\**" />
+    <None Remove="wwwroot\css\components\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Models\" />
-    <Folder Include="wwwroot\css\components\" />
     <Folder Include="wwwroot\images\avatars\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Business\Business.csproj" />
   </ItemGroup>
 
 </Project>

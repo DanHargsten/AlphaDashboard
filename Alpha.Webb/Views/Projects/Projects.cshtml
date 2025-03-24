@@ -3,15 +3,18 @@
     ViewData["Title"] = "Projects";
 }
 
+<partial name="Partials/Sections/_AddProjectForm" />
 
-<header class="projects-header">
+<header class="projects-header">    
     <h1 class="projects-header-text">@ViewData["Title"]</h1>
-    <nav class="projects-tabs">
-        <button class="tab tab-active">All [8]</button>
-        <button class="tab">Started [6]</button>
-        <button class="tab">Completed [2]</button>
-    </nav>
+    <button type="button" data-modal="true" data-target="#addProjectModal" class="btn btn-primary">Add Project</button>
 </header>
+
+<nav class="projects-tabs">
+    <button class="tab tab-active">ALL [8]</button>
+    <button class="tab">STARTED [6]</button>
+    <button class="tab">COMPLETED [2]</button>
+</nav>
 
 <div class="projects-list">
     <section class="projects-grid">
