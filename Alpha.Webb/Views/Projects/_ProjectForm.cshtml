@@ -1,0 +1,70 @@
+﻿@model Alpha.Webb.ViewModels.ProjectFormViewModel
+
+<form
+    method="post"
+    asp-controller="Projects"
+    asp-action="AddProject"
+    novalidate
+    enctype="multipart/form-data"
+    class="form"
+>
+
+    <!-- Project image -->
+    <div class="image-previewer square">
+        <img src="@Model.ImagePreviewUrl" alt="" class="image-preview"/>
+        <input asp-for="ProjectImage" accept="image/*" class="hide" />
+    </div>
+
+
+    <!-- Project Name -->
+    <div class="form__group">
+        <label class="form__label" asp-for="ProjectName"></label>
+        <div class="form__field-group">
+            <input class="form__input" asp-for="ProjectName" type="text" />
+            <span asp-validation-for="ProjectName"></span>
+        </div>
+    </div>
+
+
+    <!-- Client Name -->
+    <div class="form__group">
+        <label class="form__label" asp-for="ClientName"></label>
+        <div class="form__field-group">
+            <input class="form__input" asp-for="ClientName" type="text" />
+            <span asp-validation-for="ClientName"></span>
+        </div>
+    </div>
+
+
+    <!-- Replace with proper WYSIWYG-tool -->
+    <!-- Project description -->
+    <div class="form__group">
+        <label class="form__label" asp-for="Description"></label>
+        <div class="form__field-group">
+            <textarea asp-for="Description" class="form__input" style="min-height: 120px;"></textarea>
+            <span asp-validation-for="Description"></span>
+        </div>
+    </div>
+
+
+    <!-- Start / End date-->
+    <div class="form-date-group">
+        <div class="form__group">
+            <label asp-for="StartDate" class="form__label"></label>
+            <input asp-for="StartDate" type="date" class="form__input" />
+            <span asp-validation-for="StartDate"></span>
+        </div>
+
+        <div class="form__group">
+            <label asp-for="EndDate" class="form__label"></label>
+            <input asp-for="EndDate" type="date" class="form__input" />
+            <span asp-validation-for="EndDate"></span>
+        </div>
+    </div>
+
+    <!-- Submit button -->
+    <div class="form__actions">
+        <button type="submit" class="btn btn-primary btn-submit">Create</button>
+    </div>
+
+</form>

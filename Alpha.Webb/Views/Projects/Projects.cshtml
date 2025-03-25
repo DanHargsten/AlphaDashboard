@@ -1,16 +1,18 @@
-﻿@{
+﻿@model Alpha.Webb.ViewModels.ProjectFormViewModel
+@{
     Layout = "_DashboardLayout";
-    ViewData["Title"] = "Projects";
+    ViewBag.Title = "Projects";
 }
 
-<partial name="Partials/Sections/_AddProjectForm" />
-
 <header class="projects-header">    
-    <h1 class="projects-header-text">@ViewData["Title"]</h1>
-    <button type="button" data-modal="true" data-target="#addProjectModal" class="btn btn-primary">Add Project</button>
+    <h1 class="projects-header-text">@ViewBag.Title</h1>
+    <button type="button" data-modal="true" data-target="#addProjectModal" class="btn btn-primary">
+        Add Project
+    </button>
 </header>
 
 <nav class="projects-tabs">
+    <!-- Nummerna är placeholders, de ska uppdatera med antal projekt senare -->
     <button class="tab tab-active">ALL [8]</button>
     <button class="tab">STARTED [6]</button>
     <button class="tab">COMPLETED [2]</button>
@@ -29,4 +31,35 @@
         @await Html.PartialAsync("Partials/Components/_ProjectCard")
 
     </section>
+</div>
+
+
+
+<!-- Add Project Modal -->
+<div id="addProjectModal" class="modal">
+    <div class="modal-content box-surface">
+
+        <div class="modal-header">
+            <div class="modal-header__top">
+                <h3 class="modal__header-text">Add Project</h3>
+                <button class="btn-close" data-close="true"></button>
+            </div>
+        </div>
+
+        <partial name="_ProjectForm" model="Model" />
+    </div>
+</div>
+
+
+<!-- Edit Project Modal -->
+<div id="editProjectModal" class="modal">
+    <div class="modal-content box-surface">
+        <div class="modal-header">
+            <div class="modal-header__top">
+                <h3 class="modal__header-text">Edit Project</h3>
+                <button class="btn-close" data-close="true"></button>
+            </div>
+        </div>
+        <partial name="_ProjectForm" model="Model" />
+    </div>
 </div>
