@@ -1,5 +1,6 @@
 ﻿using Alpha.Webb.ViewModels;
 using Business.Models;
+using Business.Services;
 using Data.Contexts;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -8,11 +9,14 @@ namespace Alpha.Webb.Controllers
 {
 
 
-    public class ProjectsController(AppDbContext context) : Controller
+    public class ProjectsController(AppDbContext context, ProjectService projectService) : Controller
     {
         private readonly AppDbContext _context = context;
+        private readonly ProjectService _projectService = projectService;
 
-        
+
+
+
         // Projects()
         [HttpGet("")]
         public async Task<IActionResult> Projects()
@@ -30,8 +34,11 @@ namespace Alpha.Webb.Controllers
         }
 
 
+
+
+
         [HttpPost]
-        public IActionResult AddProject(ProjectFormViewModel model)
+        public async Task<IActionResult> AddProject(ProjectFormViewModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -46,18 +53,17 @@ namespace Alpha.Webb.Controllers
             }
 
 
-            var project = new Project
+            var projectForm = new ProjectRegistrationForm
             {
                 ProjectName = model.ProjectName,
                 ClientName = model.ClientName,
                 Description = model.Description,
                 StartDate = model.StartDate,
                 EndDate = model.EndDate,
-                CreatedDate = DateTime.Now
             };
 
-            // Send data to projectService
-            return Ok(new { success = true });
+            var result = await _projectService.AddProjectAsync(projectForm);
+            return Ok(new { success = result });
         }
 
 

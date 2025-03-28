@@ -125,19 +125,6 @@ function clearErrorMessages(form) {
 }
 
 
-function addErrorMessage(key, errorMessage) {
-    let input = form.querySelector(`[name="${key}"]`)
-    if (input) {
-        input.classList.add('input-validation-error')
-    }
-
-    let span = form.querySelector(`[data-valmsg-for="${key}"]`)
-    if (span) {
-        span.innerText = errorMessage
-        span.classList.add('field-validation-error')
-    }
-}
-
 
 
 

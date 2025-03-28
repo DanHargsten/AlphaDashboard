@@ -1,10 +1,16 @@
+using Business.Services;
 using Data.Contexts;
+using Data.Interfaces;
+using Data.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""E:\EC Webbutveckling\5. ASP.NET\AlphaDashboard\Data\Database\local_db.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=True"));
+builder.Services.AddDbContext<AppDbContext>(options => options
+    .UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""E:\EC Webbutveckling\5. ASP.NET\AlphaDashboard\Data\Database\local_db.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=True"))
+    .AddScoped<IProjectRepository, ProjectRepository>()
+    .AddScoped<ProjectService>();
 
 builder.Services.AddControllersWithViews();
 
