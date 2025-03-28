@@ -66,14 +66,9 @@
     forms.forEach(form => {
         form.addEventListener('submit', async (e) => {
             e.preventDefault()
-
-            console.log('1')
-
             clearErrorMessages(form)
-            console.log('2')
 
             const formData = new FormData(form)
-            console.log('3')
 
             try {
                 const res = await fetch(form.action, {
@@ -81,14 +76,29 @@
                     body: formData
                 })
 
-                console.log(4)
+                if (res.ok) {
+                    const modal = form.closest('.modal')
+                    if (modal)
+                        modal.style.display = 'none';
 
-                if (res.status === 400) {
+                    window.location.reload()
+                }
+
+                else if (res.status === 400) {
                     const data = await res.json()
 
                     if (data.errors) {
                         Object.keys(data.errors).forEach(key => {
-                            addErrorMessage(key, data.errors[key].join('/n'))
+                            let input = form.querySelector(`[name="${key}"]`)
+                            if (input) {
+                                input.classList.add('input-validation-error')
+                            }
+
+                            let span = form.querySelector(`[data-valmsg-for="${key}"]`)
+                            if (span) {
+                                span.innerText = data.errors[key].join('\n')
+                                span.classList.add('field-validation-error')
+                            }
                         })
                     }
                 }
@@ -116,12 +126,12 @@ function clearErrorMessages(form) {
 
 
 function addErrorMessage(key, errorMessage) {
-    const input = form.querySelector(`[name="${key}"]`)
+    let input = form.querySelector(`[name="${key}"]`)
     if (input) {
         input.classList.add('input-validation-error')
     }
 
-    const span = form.querySelector(`[data-valmsg-for="${key}"]`)
+    let span = form.querySelector(`[data-valmsg-for="${key}"]`)
     if (span) {
         span.innerText = errorMessage
         span.classList.add('field-validation-error')

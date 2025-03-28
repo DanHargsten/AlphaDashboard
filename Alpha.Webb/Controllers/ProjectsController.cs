@@ -24,6 +24,8 @@ namespace Alpha.Webb.Controllers
                 Projects = projects
             };
 
+            // Send to service
+
             return View(viewModel);
         }
 
@@ -54,7 +56,8 @@ namespace Alpha.Webb.Controllers
                 CreatedDate = DateTime.Now
             };
 
-            return RedirectToAction("Projects", "Projects");
+            // Send data to projectService
+            return Ok(new { success = true });
         }
 
 
@@ -74,7 +77,7 @@ namespace Alpha.Webb.Controllers
                 return BadRequest(new { success = false, errors });
             }
 
-            return RedirectToAction("Projects");
+            return Ok(new { success = true });
         }
     }
 }
