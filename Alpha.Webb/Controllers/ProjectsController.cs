@@ -1,22 +1,34 @@
 ﻿using Alpha.Webb.ViewModels;
 using Business.Models;
+using Data.Contexts;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Alpha.Webb.Controllers
 {
 
-    //[Route("projects")]
-    public class ProjectsController : Controller
+
+    public class ProjectsController(AppDbContext context) : Controller
     {
+        private readonly AppDbContext _context = context;
+
+        
+        // Projects()
         [HttpGet("")]
-        public IActionResult Projects()
+        public async Task<IActionResult> Projects()
         {
-            var formModel = new ProjectFormViewModel();
-            return View(formModel);
+            var projects = await _context.Projects.ToListAsync();
+            var viewModel = new ProjectsPageViewModel()
+            {
+                NewProject = new ProjectFormViewModel(),
+                Projects = projects
+            };
+
+            return View(viewModel);
         }
 
 
-        [HttpPost("addproject")]
+        [HttpPost]
         public IActionResult AddProject(ProjectFormViewModel model)
         {
             if (!ModelState.IsValid)
@@ -31,6 +43,7 @@ namespace Alpha.Webb.Controllers
                 return BadRequest(new { success = false, errors });
             }
 
+
             var project = new Project
             {
                 ProjectName = model.ProjectName,
@@ -41,8 +54,10 @@ namespace Alpha.Webb.Controllers
                 CreatedDate = DateTime.Now
             };
 
-            return RedirectToAction("Projects");
+            return RedirectToAction("Projects", "Projects");
         }
+
+
 
         [HttpPost("editproject")]
         public IActionResult EditProject(ProjectFormViewModel model)

@@ -1,9 +1,11 @@
-﻿<article class="box-surface project-card">
+﻿@model Data.Entities.ProjectEntity
+
+<article class="box-surface project-card">
     <header class="card-header">
         <img src="~/images/placeholder-icon.svg" alt="Project icon." class="card-icon" />
         <div class="card-header-text">
-            <p class="card-header-title">Test project name</p>
-            <p class="card-header-client">Test project client</p>
+            <p class="card-header-title">@Model.ProjectName</p>
+            <p class="card-header-client">@Model.ClientName</p>
         </div>
 
         <button type="button" data-modal="true" data-target="#editProjectModal" class="card-options" aria-label="Options menu.">
@@ -12,6 +14,6 @@
     </header>
 
     <div class="card-body">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+        <p>@Model.Description</p>
     </div>
 </article>

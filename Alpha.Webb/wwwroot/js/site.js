@@ -67,32 +67,28 @@
         form.addEventListener('submit', async (e) => {
             e.preventDefault()
 
+            console.log('1')
+
             clearErrorMessages(form)
+            console.log('2')
 
             const formData = new FormData(form)
+            console.log('3')
 
             try {
                 const res = await fetch(form.action, {
                     method: 'post',
                     body: formData
                 })
-                console.log(res)
+
+                console.log(4)
 
                 if (res.status === 400) {
                     const data = await res.json()
 
                     if (data.errors) {
                         Object.keys(data.errors).forEach(key => {
-                            let input = form.querySelector(`[name="${key}"]`)
-                            if (input) {
-                                input.classList.add('input-validation-error')
-                            }
-
-                            let span = form.querySelector(`[data-valmsg-for="${key}"]`)
-                            if (span) {
-                                span.innerText = data.errors[key].join('\n')
-                                span.classList.add('field-validation-error')
-                            }
+                            addErrorMessage(key, data.errors[key].join('/n'))
                         })
                     }
                 }
@@ -103,6 +99,7 @@
         })
     })
 })
+
 
 
 
@@ -130,6 +127,8 @@ function addErrorMessage(key, errorMessage) {
         span.classList.add('field-validation-error')
     }
 }
+
+
 
 
 

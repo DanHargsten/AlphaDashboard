@@ -1,4 +1,5 @@
-﻿@model Alpha.Webb.ViewModels.ProjectFormViewModel
+﻿@model Alpha.Webb.ViewModels.ProjectsPageViewModel
+
 @{
     Layout = "_DashboardLayout";
     ViewBag.Title = "Projects";
@@ -13,7 +14,7 @@
 
 <nav class="projects-tabs">
     <!-- Nummerna är placeholders, de ska uppdatera med antal projekt senare -->
-    <button class="tab tab-active">ALL [8]</button>
+    <button class="tab tab-active">ALL [@Model.Projects.Count()]</button>
     <button class="tab">STARTED [6]</button>
     <button class="tab">COMPLETED [2]</button>
 </nav>
@@ -21,14 +22,9 @@
 <div class="projects-list">
     <section class="projects-grid">
 
-        <!-- Manuella placeholders -->
-        @await Html.PartialAsync("Partials/Components/_ProjectCard")
-        @await Html.PartialAsync("Partials/Components/_ProjectCard")
-        @await Html.PartialAsync("Partials/Components/_ProjectCard")
-        @await Html.PartialAsync("Partials/Components/_ProjectCard")
-        @await Html.PartialAsync("Partials/Components/_ProjectCard")
-        @await Html.PartialAsync("Partials/Components/_ProjectCard")
-        @await Html.PartialAsync("Partials/Components/_ProjectCard")
+        @foreach (var project in Model.Projects) {
+            @await Html.PartialAsync("Partials/Components/_ProjectCard", project)
+        }
 
     </section>
 </div>
@@ -46,7 +42,7 @@
             </div>
         </div>
 
-        <partial name="_ProjectForm" model="Model" />
+        <partial name="_ProjectForm" model="Model.NewProject" />
     </div>
 </div>
 
@@ -60,6 +56,6 @@
                 <button class="btn-close" data-close="true"></button>
             </div>
         </div>
-        <partial name="_ProjectForm" model="Model" />
+        <partial name="_ProjectForm" model="Model.NewProject" />
     </div>
 </div>
