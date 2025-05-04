@@ -14,7 +14,7 @@ public static class ProjectFactory
             Description = form.Description,
             StartDate = form.StartDate,
             EndDate = form.EndDate,
-            CreatedDate = DateTime.Now
+            CreatedDate = DateTime.UtcNow
         };
     }
 

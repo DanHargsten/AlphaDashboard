@@ -17,7 +17,6 @@ namespace Alpha.Webb.Controllers
 
 
 
-        // Projects()
         [HttpGet("")]
         public async Task<IActionResult> Projects()
         {

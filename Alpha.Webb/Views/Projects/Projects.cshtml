@@ -7,14 +7,19 @@
 
 <header class="projects-header">    
     <h1 class="projects-header-text">@ViewBag.Title</h1>
-    <button type="button" data-modal="true" data-target="#addProjectModal" class="btn btn-primary">
+    <button 
+        type="button"
+        class="btn btn-primary" 
+        data-action="open"
+        data-target="#addProjectModal"
+    >
         Add Project
     </button>
 </header>
 
 <nav class="projects-tabs">
-    <!-- Nummerna är placeholders, de ska uppdatera med antal projekt senare -->
     <button class="tab tab-active">ALL [@Model.Projects.Count()]</button>
+    <!-- Placeholders -->
     <button class="tab">STARTED [6]</button>
     <button class="tab">COMPLETED [2]</button>
 </nav>
@@ -38,7 +43,12 @@
         <div class="modal-header">
             <div class="modal-header__top">
                 <h3 class="modal__header-text">Add Project</h3>
-                <button class="btn-close" data-close="true"></button>
+                <button 
+                    type="button"
+                    class="btn-close"
+                    data-action="close"
+                    data-target="#addProjectModal">
+                </button>
             </div>
         </div>
 

@@ -1,31 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
 
-/*
-    01. Variables
-    02. Darkmode
-    03. Base / Reset
-    04. Layout / Utility
-    05. Components
-    06. Forms
-    07. Sections
-      - 7.1. Sidebar
-      - 7.2. Header
-      - 7.3. Page Content
-      - 7.4. Project Cards
-*/
 
-
-/* ====================================
-  01. Variables
-==================================== */
+/*------------------------------------
+  Variables
+------------------------------------*/
 :root {
     /* Fonts */
     --font-regular: "Nunito", sans-serif;
     --font-logo: "Comfortaa", sans-serif;
     --font-fa-free: "Font Awesome 6 Free";
 
-    /* Font sizes */
+    /* Type scale */
     --fs16px: 1rem;
     --fs18px: 1.125rem;
     --fs24px: 1.5rem;
@@ -39,7 +25,6 @@
     --fw-medium: 500;
     --fw-semibold: 600;
     --fw-bold: 700;
-    --fw-extrabold: 800;
 
     /* Colors */
     --clr-heading: #1A1926;
@@ -85,9 +70,7 @@
 
 
 
-/* ====================================
-  02. Darkmode
-==================================== */
+/* Dark mode overrides */
 [data-theme="dark"] {
     --clr-heading: #FFFFFF;
     --clr-body-light: #637085;
@@ -105,49 +88,50 @@
 
 
 
-/* ====================================
-  03. Base / Reset
-==================================== */
-*,
-*::after,
-*::before {
+/*------------------------------------
+  Reset & Base
+------------------------------------*/
+*, *::before, *::after {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 html, body {
-    background-color: #535353;
+    height: 100%;
     font-family: var(--font-regular);
-    font-size: var(--fs16px);
-}
-
-input {
-    border: none;
-    background-color: transparent;
-    outline: none;
+    font-size: var(--fs-base);
+    background: var(--clr-bg);
+    color: var(--clr-heading);
 }
 
 a {
+    color: var(--clr-text);
     text-decoration: none;
-    color: var(--clr-body-dark);
 }
 
 ul {
     list-style: none;
 }
 
-button {
+button, input, textarea {
+    font: inherit;
     border: none;
-    background-color: transparent;
+    background: none;
+    outline: none;
+}
+
+button {
     cursor: pointer;
 }
 
 
 
-/* ====================================
-  04. Layout / Utility
-==================================== */
+/*------------------------------------
+  Utilities
+------------------------------------*/
+.hide { display: none; }
+
 .screen-center {
     display: flex;
     justify-content: center;
@@ -156,20 +140,25 @@ button {
 }
 
 
+/*------------------------------------
+  Layout
+------------------------------------*/
+.dashboard {
+    display: grid;
+    grid-template-areas:
+        "logo top"
+        "side main";
+    grid-template-columns: minmax(3.25rem, 16.8rem) 1fr;
+    grid-template-rows: 5rem 1fr;
+    height: 100dvh;
+}
+
 .box-surface {
     border-radius: 1rem;
     background-color: var(--clr-surface);
     box-shadow: 0px 4px 4px 1px rgba(130, 130, 130, 0.2)
 }
 
-.dashboard {
-    display: grid;
-    grid-template-columns: minmax(3.25rem, 16.5rem) 1fr;
-    grid-template-rows: 5rem 1fr;
-    grid-template-areas: "logo top" "side main";
-    height: 100dvh;
-    overflow: hidden;
-}
 
 .layout-container {
     max-width: 1920px;
@@ -182,11 +171,10 @@ button {
 
 
 
-/* ====================================
-  05. Components
-/*==================================== */
-/* 1. Buttons */
-.btn {
+/*------------------------------------
+  Components: Buttons
+------------------------------------*/
+.btn {    
     padding-block: 0.875rem;
     padding-inline: 1.5rem;
     border-radius: 1rem;
@@ -223,12 +211,9 @@ button {
 
 
 
-/* ====================================
-  06. Forms
-==================================== */
-.form {
-    /*    width: 100%;*/
-}
+/*------------------------------------
+  Components: Forms
+------------------------------------*/
 
 .auth-form {
     padding-inline: 6.25rem;
@@ -354,10 +339,11 @@ form .input-validation-error {
 
 
 
-/* Modal */
+/*------------------------------------
+  Modal
+------------------------------------*/
 .modal {
-        display: none;
-/*    display: flex;*/
+    display: none;
     justify-content: center;
     align-items: center;
     position: fixed;
@@ -386,8 +372,8 @@ form .input-validation-error {
     margin: 1rem auto;
 }
 
-.modal .modal-content .modal-header {
-    /*    display: flex;*/
+.modal.modal-show {
+    display: flex;
 }
 
 .modal .modal-content .modal-header .modal__header-text {
@@ -397,31 +383,13 @@ form .input-validation-error {
 
 
 #addProjectModal .modal-content {
-    /*        background-color: var(--clr-modal-bg);*/
-/*    padding-inline: 6.25rem;*/
     padding: 1.875rem;
     width: 34rem;
-/*    display: grid;*/
-    /*    grid-template-rows: auto 1fr auto;*/
 }
 
 
 
 
-
-
-
-
-
-
-
-/* ====================================
-  07. Sections
-==================================== */
-/* ----------------------------- */
-/* 7.1. Sidebar */
-/* ----------------------------- */
-/* Huvudcontainer för sidebar */
 .side {
     display: flex;
     flex-direction: column;
@@ -429,11 +397,6 @@ form .input-validation-error {
 }
 
 
-/* ----------------------------- */
-/*            LOGOTYPE           */
-/* ----------------------------- */
-
-/* Wrapper för logotypen i sidebaren */
 .logo .logotype {
     grid-area: logo;
     padding-left: 1rem;
@@ -445,7 +408,7 @@ form .input-validation-error {
     align-items: center;
 }
 
-/* Styling för logotypen (ikon + text) */
+
 .logotype .alpha-logotype {
     gap: 0.5rem;
     display: inline-flex;
@@ -457,11 +420,7 @@ form .input-validation-error {
 }
 
 
-/* ----------------------------- */
-/*           NAVIGATION          */
-/* ----------------------------- */
 
-/* Wrapper för navigationslänkar i sidebaren */
 .side .nav-links {
     grid-area: side;
     border-right: 1px solid var(--clr-border-200);
@@ -470,11 +429,10 @@ form .input-validation-error {
 }
 
 .nav-list {
-/*    height: 100dvh;*/
     width: 100%;
 }
 
-/* Enskilda menyobjekt */
+
 .nav-links .nav-item {
     padding-inline: 1rem;
     display: flex;
@@ -485,7 +443,7 @@ form .input-validation-error {
     cursor: pointer;
 }
 
-/* Länkar i navigeringen */
+
 .nav-links .nav-link {
     display: flex;
     align-items: center;
@@ -499,18 +457,18 @@ form .input-validation-error {
     background-color: transparent;
     transition: color ease 300ms, background-color ease 300ms;
 }
-    /* Hover-effekt på navigationslänkar */
+
     .nav-links .nav-link:hover {
         color: var(--clr-accent);
         background-color: var(--clr-accent-opacity);
     }
-    /* Aktiv länk i navigeringen */
+
     .nav-links .nav-link.active {
         color: var(--clr-accent);
         background-color: var(--clr-accent-opacity);
     }
 
-    /* Ikoner i navigationslänkar */
+
     .nav-links .nav-link i {
         font-size: 1rem;
         width: 1.5rem;
@@ -518,14 +476,11 @@ form .input-validation-error {
     }
 
 
-/* ----------------------------- */
-/* 7.2. Header */
-/* ----------------------------- */
-/* Huvudcontainer för headern */
+
 .dashboard .header {
     grid-area: top;
     display: grid;
-    grid-template-columns: 1fr auto; /* Sökfält till vänster, kontroller till höger */
+    grid-template-columns: 1fr auto; 
     align-items: center;
     padding-inline: 1.85rem;
     gap: 5rem;
@@ -533,11 +488,7 @@ form .input-validation-error {
 }
 
 
-/* ----------------------------- */
-/*            SÖKFÄLT            */
-/* ----------------------------- */
 
-/* Wrapper för sökfältet */
 .header .search-bar {
     display: flex;
     gap: 0.5rem;
@@ -545,13 +496,11 @@ form .input-validation-error {
 }
 
 
-    /* Ikonen i sökfältet */
     .header .search-bar i {
         font-size: 1.25rem;
     }
 
 
-/* Inputfältet i söksektionen */
 .search-bar .search-input {
     width: 100%;
     padding-inline: 0.25rem;
@@ -560,18 +509,13 @@ form .input-validation-error {
 }
 
 
-/* ----------------------------- */
-/*         USER CONTROLS         */
-/* ----------------------------- */
-
-/* Wrapper för användarkontroller (ikoner + avatar) */
 .header .user-controls {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* Ikoner för användarkontrollen */
+
 .user-controls .settings,
 .user-controls .notifications {
     color: var(--clr-body-light);
@@ -581,13 +525,13 @@ form .input-validation-error {
     height: 2.5rem;
     transition: background-color ease 300ms;
 }
-    /* Hover-effekt på inställnings- och notifikationsikoner */
+
     .user-controls .settings:hover,
     .user-controls .notifications:hover {
         background-color: var(--clr-accent-opacity);
     }
 
-/* Vertikal avdelare mellan ikoner och avatar */
+
 .user-controls .divider {
     width: 1px;
     height: 2rem;
@@ -595,16 +539,14 @@ form .input-validation-error {
     margin-inline: 0.5rem 1rem;
 }
 
-/* Användarens avatarbild */
+
 .user-controls .user-avatar {
     height: 2.5rem;
     cursor: pointer;
 }
 
 
-/* ----------------------------- */
-/* 7.2. Page Content */
-/* ----------------------------- */
+
 .page-content {
     grid-area: main;
     display: flex;
@@ -650,7 +592,6 @@ form .input-validation-error {
 .projects-list {
     flex: 1;
     overflow-y: auto;
-/*    scrollbar-gutter: stable both-edges;*/
 }
 
 
@@ -659,9 +600,6 @@ form .input-validation-error {
 
 
 
-/* ----------------------------- */
-/* 7.3. Project Cards / Project Grid */
-/* ----------------------------- */
 .projects-grid {
     display: grid;
     gap: 2.125rem;
@@ -713,18 +651,14 @@ form .input-validation-error {
     flex: 1;
     overflow-y: auto;
     font-weight: var(--fw-regular)
-    /*    text-wrap: pretty;*/
 }
 
 
 
 
 
-.hide {
-    display: none;
-}
 
-/* image-previewer */
+
 .image-previewer {
     border: 2px dashed var(--clr-border-300);
     height: 9.375rem;
